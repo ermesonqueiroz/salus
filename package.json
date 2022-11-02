@@ -1,0 +1,26 @@
+{
+  "name": "salus",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "start": "npx tailwindcss -i styles/input.css -o dist/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ermesonqueiroz/salus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ermesonqueiroz/salus/issues"
+  },
+  "homepage": "https://github.com/ermesonqueiroz/salus#readme",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "@glidejs/glide": "^3.5.2"
+  }
+}
