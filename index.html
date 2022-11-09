@@ -10,10 +10,16 @@
 </head>
 <body>
   <div class="w-full overflow-x-hidden">
-    <nav class="px-8 py-4 flex transition-opacity duration-500 justify-between items-center fixed self-center w-full top-0 z-10">
-      <img src="assets/logo.jpg" route="home" class="cursor-pointer rounded-full" height="48px" width="48px" onclick="setActiveSection('home')" />
+    <nav class="px-8 py-4 bg-zinc-900/40 md:bg-transparent md:border-none md:backdrop-blur-0 backdrop-blur-md border-b border-gray-500 flex transition-opacity duration-500 justify-between items-center fixed self-center w-full top-0 z-10">
+    <img src="assets/logo.jpg" route="home" class="cursor-pointer rounded-full" height="48px" width="48px" onclick="setActiveSection('home')" />
   
-      <ul class="flex text-slate-50 font-medium gap-x-8 flex-1 justify-center relative bg-red/30 uppercase text-sm"> 
+      <div class="flex md:hidden nav-icon items-center justify-center w-12 h-12">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-neutral-200">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </div>
+
+      <ul class="md:flex hidden text-slate-50 font-medium gap-x-8 flex-1 justify-center relative bg-red/30 uppercase text-sm"> 
         <li class="z-2 cursor-pointer" route="home">
           <p>Início</p>
         </li>
@@ -37,9 +43,33 @@
     </nav>
   </div>
 
+  <div style="height: calc(100vh - 80px);" class="hidden md:hidden fixed top-20 w-screen bg-slate-900 nav-items text-slate-50 font-medium flex-1 justify-center z-10 md:relative bg-red/30 uppercase text-4xl py-8 flex-col pl-20">
+    <ul class="flex flex-col gap-10">
+      <li class="z-2 cursor-pointer" route="home">
+        <p class="overflow-hidden"><strong>Início</strong></p>
+      </li>
+  
+      <li class="z-2 cursor-pointer" route="about">
+        <p class="overflow-hidden"><strong>Sobre</strong></p>
+      </li>
+  
+      <!-- <li class="z-2 cursor-pointer" route="teams">
+        <p>Times</p>
+      </li> -->
+  
+      <li class="z-2 cursor-pointer" route="services">
+        <p class="overflow-hidden"><strong>Serviços</strong></p>
+      </li>
+  
+      <li class="z-2 cursor-pointer" route="contact">
+        <p class="overflow-hidden"><strong>Contato</strong></p>
+      </li>
+    </ul>
+  </div>
+  
   <div class="flex overflow-x-hidden">
-    <section id="contact" class="route bg-slate-900 w-full h-full justify-center items-center bg-cover bg-no-repeat bg-center">
-      <div class="flex flex-col gap-y-24 w-full h-full items-center justify-center">
+    <section id="contact" class="route bg-slate-900 w-full min-h-full justify-center items-center bg-cover bg-no-repeat bg-center">
+      <div class="flex flex-col gap-y-16 md:gap-y-24 w-full h-full items-center justify-center mt-28 md:mt-0">
         <h1 class="text-2xl text-white tracking-widest text-center leading-loose uppercase">
           Entre em<br/>
           <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300 text-4xl background-animate">
@@ -47,7 +77,7 @@
           </strong>
         </h1>
 
-        <div class="flex gap-x-24">
+        <div class="flex flex-col md:flex-row md:justify-center flex-wrap w-full gap-x-24 gap-y-12 items-center mb-10">
           <div class="flex flex-col items-center max-w-xs text-center gap-y-8">
             <div class="p-6 bg-slate-700 rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-neutral-100">
@@ -86,7 +116,6 @@
               </svg>
             </div>
             
-
             <div class="flex flex-col gap-y-4">
               <h1 class="text-3xl text-neutral-200 uppercase"><strong>e-mail</strong></h1>
               <p class="text-slate-50 leading-normal max-w-4xl text-lg">
@@ -98,64 +127,54 @@
       </div>
     </section>
 
-    <!-- <section id="teams" class="route bg-red-800 w-full h-full justify-center items-center bg-cover bg-no-repeat bg-center">
-      <div class="flex flex-col gap-y-12 w-full h-full items-center justify-center">
-        <h1 class="text-2xl text-white tracking-widest text-center leading-loose uppercase">
-          Esses são nossos serviços<br/>
-          <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300 text-4xl background-animate">
-            Times
-          </strong>
-        </h1>
-    </section> -->
-
     <section id="services" class="route bg-slate-900 flex flex-col py-8 min-h-full w-full items-center justify-center">
-      <div class="flex flex-col gap-y-12 w-full h-[35vh] items-center justify-end">
-        <h1 class="text-2xl text-white tracking-widest text-center leading-loose uppercase">
+      <div class="flex flex-col gap-y-12 w-full h-[35vh] overflow-visible items-center justify-end">
+        <h1 class="text-xl md:text-2xl text-white tracking-widest text-center overflow-visible leading-loose uppercase">
           Isso é<br/>
-          <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300 text-4xl background-animate">
+          <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300 text-3xl md:text-4xl background-animate">
             O QUE FAZEMOS
           </strong>
         </h1>
       </div>
 
-      <div class="w-full h-full flex flex-col gap-y-20 px-16 mt-24 items-center">
+      <div class="w-full h-full flex flex-col gap-y-20 md:px-16 mt-24 items-center max-w-xs md:max-w-4xl text-justify md:text-center">
         <div class="flex gap-x-16">
-          <img src="assets/aquilae.png" width="120px" style="object-fit: contain;" />
+          <img src="assets/aquilae.png" width="800px" class="hidden md:inline" style="object-fit: contain;" />
 
-          <div class="flex flex-col max-w-3xl">
+          <div class="flex flex-col items-start">
             <h1 class="overflow-visible">
-              <strong class="text-neutral-100 text-4xl relative underline-gradient leading-loose">AQUILAE TEAM</strong>
+              <strong class="text-neutral-100 text-4xl relative underline-gradient md:leading-loose">AQUILAE TEAM</strong>
             </h1>
             
-            <p class="text-neutral-300 mt-2 text-justify leading-relaxed text-lg">
+            <p class="text-neutral-300 mt-6 md:mt-2 text-justify leading-relaxed text-lg">
               Tem o propósito de preparar e manter um ambiente de cibersegurança com base nas mais eficientes práticas de mercado, com a intenção de manter a continuidade dos negócios. Formado por um grupo de especialistas em cibersegurança e multidisciplinares, o Team Aquilae promete garantir a defesa de todos os clientes, trabalhando em conjunto com outros times (como o Team Serpens – que será citado posteriormente) para agregar conhecimento e tornar as tecnologias de defesa cada vez mais eficazes.
             </p>
           </div>
         </div>
 
         <div class="flex gap-x-16">
-          <img src="assets/serpens.png" width="120px" style="object-fit: contain;" />
+          <img src="assets/serpens.png" width="800px" class="hidden md:inline" style="object-fit: contain;" />
 
-          <div class="flex flex-col max-w-3xl">
+          <div class="flex flex-col max-w-3xl items-start">
             <h1 class="overflow-visible">
-              <strong class="text-neutral-100 text-4xl relative underline-gradient leading-loose">SERPENS TEAM</strong>
+              <strong class="text-neutral-100 text-4xl relative underline-gradient md:leading-loose">SERPENS TEAM</strong>
             </h1>
 
-            <p class="text-neutral-300 mt-2 text-justify leading-relaxed text-lg">
+            <p class="text-neutral-300 mt-6 md:mt-2 text-justify leading-relaxed text-lg">
               A equipe de ataque. Seu objetivo é analisar todas as falhas de segurança, identificadas ou não, a fim de realizar de forma efetiva os ataques a um ambiente, para antecipá-las e corrigi-las. Além de compreender testes de intrusão (físico e lógico), análise de vulnerabilidades e análise de malware, o Team Serpens identifica qualquer vulnerabilidade no sistema defensivo PPT (Pessoas, Processo e Tecnologia). Assim, o time auxilia a empresa nas melhorias de suas próprias habilidades defensivas.
             </p>
           </div>
         </div>
 
         <div class="flex gap-x-16">
-          <img src="assets/pistris.png" width="120px" style="object-fit: contain;" />
+          <img src="assets/pistris.png" width="800px" class="hidden md:inline" style="object-fit: contain;" />
 
-          <div class="flex flex-col max-w-3xl">
+          <div class="flex flex-col max-w-3xl items-start">
             <h1 class="overflow-visible">
-              <strong class="text-neutral-100 text-4xl relative underline-gradient leading-loose">PISTRIS TEAM</strong>
+              <strong class="text-neutral-100 text-4xl relative underline-gradient md:leading-loose">PISTRIS TEAM</strong>
             </h1>
             
-            <p class="text-neutral-300 mt-2 text-justify leading-relaxed text-lg">
+            <p class="text-neutral-300 mt-6 md:mt-2 text-justify leading-relaxed text-lg">
               A junção das outras duas equipes. Reúne os melhores profissionais de cada área, fazendo com que troquem experiências e criem soluções cada vez mais eficazes. O Team Pistris garantirá que sua segurança seja de primeira linha, sempre optando pelas melhores alternativas possíveis para conseguir êxito em suas funções. Com um atendimento personalizado, nosso time cumpre tudo o que é prometido e se possível, ainda mais que isso. Tudo com o objetivo de nutrir o melhor atendimento e garantir fidelidade de todos os nossos clientes.
             </p>
           </div>
@@ -163,16 +182,16 @@
       </div>
     </section>
 
-    <section id="about" class="route bg-slate-900 w-full h-full justify-center items-center bg-cover bg-no-repeat bg-center">
-      <div class="flex flex-col gap-y-12 w-full h-full items-center justify-center">
-        <h1 class="text-2xl text-white tracking-widest text-center leading-loose uppercase">
+    <section id="about" class="route bg-slate-900 w-full min-h-full md:h-full justify-center items-center bg-cover bg-no-repeat bg-center">
+      <div class="flex flex-col gap-y-12 w-full h-full items-center my-32 md:my-0 md:justify-center">
+        <h1 class="text-xl overflow-visible md:text-2xl text-white tracking-widest text-center leading-loose uppercase">
           você deve estar se perguntando<br/>
-          <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300 text-4xl background-animate">
+          <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300 text-3xl md:text-4xl background-animate">
             o que é salus?
           </strong>
         </h1>
 
-        <p class="text-slate-200 text-center text-xl leading-normal max-w-4xl">A Salus Company é uma empresa focada na inovação da segurança da informação, criada para oferecer serviços de defesa e garantir a proteção digital aos seus clientes, de forma que investe em soluções criativas e eficientes para lidar com as necessidades atuais de mercado. Dentre os serviços fornecidos estão: defesa dos Sistemas Operacionais por meio da segurança à base de criptografia e a estabilidade de um ambiente de cibersegurança com base nas mais atuais tecnologias.</p>
+        <p class="text-slate-200 text-xl leading-normal max-w-xs md:max-w-4xl text-justify md:text-center">A Salus Company é uma empresa focada na inovação da segurança da informação, criada para oferecer serviços de defesa e garantir a proteção digital aos seus clientes, de forma que investe em soluções criativas e eficientes para lidar com as necessidades atuais de mercado. Dentre os serviços fornecidos estão: defesa dos Sistemas Operacionais por meio da segurança à base de criptografia e a estabilidade de um ambiente de cibersegurança com base nas mais atuais tecnologias.</p>
       </div>
     </section>
 
@@ -193,6 +212,152 @@
       </div>
     </main> 
   </div>
+
+  <div id="help-container" class="hidden transition-all fixed top-0 bg-black/70 w-screen h-screen z-[999] flex-col justify-center items-center gap-y-8">
+    <div class="flex flex-col w-[580px] bg-zinc-900 rounded-lg py-3 gap-y-6">
+      <input placeholder="Pesquise por um comando..." class="bg-zinc-900 h-8 mx-6 w-full outline-none text-neutral-100 text-lg" />
+
+      <div class="flex flex-col text-neutral-200 w-full">
+        <div class="flex flex-col items-start gap-y-2 overflow-">
+          <h2 class="uppercase text-xs text-neutral-300 ml-6">geral</h2>
+
+          <div class="flex flex-col w-full">
+            <div class="flex items-center justify-between hover:bg-white/5 hover:text-neutral-100 text-lg transition-colors w-full py-3 px-6 text-neutral-400 cursor-pointer">
+              <div class="flex gap-x-4 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                </svg>
+                
+                <p>Copiar Link</p>
+              </div>
+
+              <div class="flex gap-x-1">
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  C
+                </p>
+
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  L
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between hover:bg-white/5 hover:text-neutral-100 text-lg transition-colors w-full py-3 px-6 text-neutral-400 cursor-pointer">
+              <div class="flex gap-x-4 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                </svg>
+                
+                
+                <p>Código Fonte</p>
+              </div>
+
+              <div class="flex gap-x-1">
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  C
+                </p>
+
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  F
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="uppercase text-xs text-neutral-300 ml-6">ir para</h2>
+
+          <div class="flex flex-col w-full">
+            <div class="flex items-center justify-between hover:bg-white/5 hover:text-neutral-100 text-lg transition-colors w-full py-3 px-6 text-neutral-400 cursor-pointer">
+              <div class="flex gap-x-4 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+                
+                
+                <p>Início</p>
+              </div>
+
+              <div class="flex gap-x-1">
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  P
+                </p>
+
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  I
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between hover:bg-white/5 hover:text-neutral-100 text-lg transition-colors w-full py-3 px-6 text-neutral-400 cursor-pointer">
+              <div class="flex gap-x-4 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                </svg>
+                
+                <p>Sobre</p>
+              </div>
+
+              <div class="flex gap-x-1">
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  P
+                </p>
+
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  H
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between hover:bg-white/5 hover:text-neutral-100 text-lg transition-colors w-full py-3 px-6 text-neutral-400 cursor-pointer">
+              <div class="flex gap-x-4 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                </svg>                
+                
+                <p>Serviços</p>
+              </div>
+
+              <div class="flex gap-x-1">
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  P
+                </p>
+
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  S
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between hover:bg-white/5 hover:text-neutral-100 text-lg transition-colors w-full py-3 px-6 text-neutral-400 cursor-pointer">
+              <div class="flex gap-x-4 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                </svg>
+
+                <p>Contato</p>
+              </div>
+
+              <div class="flex gap-x-1">
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  P
+                </p>
+
+                <p class="flex items-center justify-center uppercase h-8 w-7 bg-neutral-700 text-sm rounded-md text-neutral-400">
+                  C
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="open-help" class="hidden md:flex fixed bottom-4 right-4 p-4 bg-neutral-800 border border-neutral-100 drop-shadow-xl rounded-full z-50 cursor-pointer">
+    <img src="/assets/oliver-unscreen.gif " width="70px" />
+  </div>
+
   <script src="scripts/index.js"></script>
+  <script src="scripts/help.js"></script>
 </body>
 </html>

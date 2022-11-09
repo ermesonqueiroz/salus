@@ -10,15 +10,22 @@ const sections = [
 
 const routes = document.querySelectorAll('.route');
 const navbar = document.querySelector('nav');
+const navItems = document.querySelector('.nav-items');
 
 let activeSection = sections[0];
 let canWheel = true;
 
 function updateStyles() {
+  navbar.classList.add('bg-zinc-900/40');
+  navbar.classList.add('border-b');
+  navbar.classList.remove('bg-slate-900');
+  navItems.classList.remove('flex');
+  navItems.classList.add('hidden');
   navbar.style.opacity = 0;
-  setTimeout(() => {
-    navbar.style.display = 'none';
-  }, 500);
+  if (window.screen.width >= 768)
+    setTimeout(() => {
+      navbar.style.display = 'none';
+    }, 500);
 
   setTimeout(() => {
     routes.forEach(route => {
@@ -49,7 +56,7 @@ function updateStyles() {
 function setActiveSection(section = 'home') {
   if (section === activeSection) return;
 
-window.scrollTo({ top: 0, behavior: 'smooth' })
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 
   let pastActiveSection = activeSection;
   
@@ -57,10 +64,10 @@ window.scrollTo({ top: 0, behavior: 'smooth' })
   
   routes.forEach(route => {
     if (route.id === pastActiveSection)
-    route.setAttribute('hiding', '');
+      route.setAttribute('hiding', '');
   
     if (route.hasAttribute('section-active'))
-    return route.removeAttribute('section-active');
+      return route.removeAttribute('section-active');
     
     if (route.id === activeSection.toLowerCase()) {
       route.style.opacity = 1;
@@ -89,13 +96,36 @@ function verifyIfAnimationIsToRightOrLeft(activeRoute, route) {
     left
       ? 'LeftActiveRoute 1s ease' : 'RightActiveRoute 1s ease'
   );
-
 }
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-    document.querySelector('nav').classList.add('nav-with-bg');
+document.addEventListener('scroll', () => {
+  console.log(window.scrollY)
+
+  if (window.scrollY > 160) {
+    document.querySelector('nav').classList.remove('md:bg-transparent');
+    document.querySelector('nav').classList.remove('md:border-none');
+    document.querySelector('nav').classList.remove('md:backdrop-blur-0');
   } else {
-    document.querySelector('nav').classList.remove('nav-with-bg');
+    document.querySelector('nav').classList.add('md:bg-transparent');
+    document.querySelector('nav').classList.add('md:border-none');
+    document.querySelector('nav').classList.add('md:backdrop-blur-0');
   }
 });
+
+document
+  .querySelector('.nav-icon')
+  .addEventListener('click', () => {
+    if (navItems.classList.contains('hidden')) {
+      navbar.classList.remove('bg-zinc-900/40');
+      navbar.classList.remove('border-b');
+      navbar.classList.add('bg-slate-900');
+      navItems.classList.remove('hidden');
+      navItems.classList.add('flex');
+    } else {
+      navbar.classList.add('bg-zinc-900/40');
+      navbar.classList.add('border-b');
+      navbar.classList.remove('bg-slate-900');
+      navItems.classList.remove('flex');
+      navItems.classList.add('hidden');
+    }
+  });

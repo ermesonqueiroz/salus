@@ -88,6 +88,10 @@
   @apply bg-gradient-to-r from-blue-600 to-blue-300 background-animate;
 }
 
+#help-container {
+  animation: HelpContainer;
+}
+
 @keyframes LeftActiveRoute {
   0% {
     transform: translateX(80%);
@@ -103,5 +107,14 @@
   }
   100% {
     transform: translateX(0%);
+  }
+}
+
+@keyframes HelpContainer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
