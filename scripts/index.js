@@ -3,9 +3,8 @@ const root = document.querySelector(':root');
 const sections = [
   'home',
   'about',
-  'teams',
   'services',
-  'portfolio'
+  'contact'
 ];
 
 const routes = document.querySelectorAll('.route');
@@ -57,6 +56,10 @@ function setActiveSection(section = 'home') {
   if (section === activeSection) return;
 
   window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  const helpContainer = document.querySelector('#help-container');
+  helpContainer.classList.remove('flex');
+  helpContainer.classList.add('hidden');
 
   let pastActiveSection = activeSection;
   
